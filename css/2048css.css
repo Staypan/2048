@@ -32,13 +32,13 @@ html, body{
 }
 .restart{
     cursor: pointer;
-    width: 20vmin;
-    height: 12vmax; 
+    width: 12vmin;
+    height: 8vmax; 
 }
 .records{
     cursor: pointer;
-    width: 20vmin;
-    height: 12vmax; 
+    width: 12vmin;
+    height: 8vmax; 
 }
 .rating{
     height: 20vmin;

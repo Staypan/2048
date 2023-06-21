@@ -65,6 +65,10 @@ class Game{
                     break;
             }  
         }.bind(this));
+        onSwipe('up',    this.moveUp.bind(this));
+		onSwipe('down',  this.moveDown.bind(this));
+		onSwipe('left',  this.moveLeft.bind(this));
+		onSwipe('right', this.moveRight.bind(this));
     }
 
     addRating(value){
