@@ -1,0 +1,19 @@
+name: Deploy xnails
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Connect to host via ssh and deploy
+        run: |
+          mkdir ~/.ssh
+          eval `ssh-agent -s`
+          ssh-add - <<< "${{ secrets.SSH_KEY }}" 
+          ssh-keyscan -H ${{ secrets.HOST_IP }} >> ~/.ssh/known_hosts
+          ssh ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_IP}} ./xnails_deploy.sh
