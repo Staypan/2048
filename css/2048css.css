@@ -35,11 +35,11 @@ html, body{
     width: 12vmin;
     height: 8vmax; 
 }
-.records{
+/* .records{
     cursor: pointer;
     width: 12vmin;
     height: 8vmax; 
-}
+} */
 .rating{
     height: 20vmin;
     width: 80vmin;

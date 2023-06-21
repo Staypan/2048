@@ -27,11 +27,11 @@ class Game{
 			value: 'Начать заново'
 		}, 'button');
 
-        this.recordsElement = createAndAppend({
-			className: 'records',
-			parentElement: this.headerElement,
-			value: 'Таблица рекордов'
-		}, 'button');
+        // this.recordsElement = createAndAppend({
+		// 	className: 'records',
+		// 	parentElement: this.headerElement,
+		// 	value: 'Таблица рекордов'
+		// }, 'button');
 
         this.restartElement.addEventListener('click', this.restart.bind(this));
 
