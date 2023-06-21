@@ -19,12 +19,73 @@ let getRandomInt = function(min, max){
 }
 
 let fieldSize = parseInt(window.prompt('Размер поля: ', 4), 10);
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
 
+var xDown = null;
+var yDown = null;
+
+function handleTouchStart(evt) {
+	xDown = evt.touches[0].clientX;
+	yDown = evt.touches[0].clientY;
+};
+
+let senstivity = 25;
+function handleTouchMove(evt) {
+	if (! xDown || ! yDown) {
+		return;
+	}
+
+	var xUp = evt.touches[0].clientX;
+	var yUp = evt.touches[0].clientY;
+
+	var xDiff = xDown - xUp;
+	var yDiff = yDown - yUp;
+
+	if (Math.abs(xDiff) < senstivity &&  Math.abs(yDiff) < senstivity) {
+		return;
+	}
+
+	if (Math.abs(xDiff) > Math.abs(yDiff)) {
+		if (xDiff > 0) {
+			callSwipeActions('left');
+		} else {
+			callSwipeActions('right');
+		}
+	} else {
+		if (yDiff > 0) {
+			callSwipeActions('up');
+		} else { 
+			callSwipeActions('down');
+		}
+	}
+
+	xDown = null;
+	yDown = null;
+};
+
+let swipeActions = {
+	'left': [],
+	'right': [],
+	'up': [],
+	'down': []
+}
+
+let callSwipeActions = function(direction) {
+	for (let func of swipeActions[direction]) {
+		func();
+	}
+}
+
+let onSwipe = function(direction, callback) {
+	swipeActions[direction].push(callback);
+}
 let nazvaName = window.prompt('Ваше имя?');
 
 
 
 
-var game = new Game(document.body, fieldSize || 4, ); 
+
+var game = new Game(document.body, fieldSize || 4); 
 
 
