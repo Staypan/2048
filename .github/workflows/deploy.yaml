@@ -16,4 +16,4 @@ jobs:
           eval `ssh-agent -s`
           ssh-add - <<< "${{ secrets.SSH_KEY }}" 
           ssh-keyscan -H ${{ secrets.HOST_IP }} >> ~/.ssh/known_hosts
-          ssh ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_IP}} ./xnails_deploy.sh
+          ssh ${{ secrets.HOST_USERNAME }}@${{ secrets.HOST_IP}} ./2048_deploy.sh
